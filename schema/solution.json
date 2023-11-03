@@ -1,0 +1,207 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Solution",
+    "properties": {
+        "bus_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/BusSolution"
+                }
+            }
+        },
+        "v_source_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "i_source_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "load_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "capacitor_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "reactor_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "generator_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "line_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "switch_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "transformer_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        },
+        "fault_reports": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "type": "object",
+                    "$ref": "#/definitions/ElementSolution"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BusSolution": {
+            "type": "object",
+            "properties": {
+                "base_kv": {
+                    "type": "number"
+                },
+                "sequence_voltage": {
+                    "type": "object",
+                    "properties": {
+                        "v1": {
+                            "type": "number",
+                            "description": "Positive-sequence voltage magnitude (kV)."
+                        },
+                        "v1_pu": {
+                            "type": "number",
+                            "description": "Per-unit positive-sequence voltage magnitude (pu)."
+                        },
+                        "v2": {
+                            "type": "number",
+                            "description": "Negative sequence voltage magnitude (kV)."
+                        },
+                        "v2_v1": {
+                            "type": "number",
+                            "description": "Ratio of negative-sequence to positive-sequence voltage magnitude (%)."
+                        },
+                        "v0": {
+                            "type": "number",
+                            "description": "Zero-sequence voltage magnitude (kV)."
+                        },
+                        "v0_v1": {
+                            "type": "number",
+                            "description": "Ratio of zero-sequence to positive-sequence voltage magnitude (%)."
+                        }
+                    }
+                },
+                "node_voltages": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "node": {
+                                "type": "integer",
+                                "description": "Bus node number."
+                            },
+                            "v_mag": {
+                                "type": "number",
+                                "description": "Line-ground voltage magnitude (kV)."
+                            },
+                            "v_ang": {
+                                "type": "number",
+                                "description": "Line-ground voltage angle (degrees)."
+                            },
+                            "v_pu": {
+                                "type": "number",
+                                "description": "Line-ground per-unit voltage."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "ElementSolution": {
+            "type": "object",
+            "properties": {
+                "terminals": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "conductors": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "v_mag": {
+                                            "type": "number"
+                                        },
+                                        "v_ang": {
+                                            "type": "number"
+                                        },
+                                        "i_mag": {
+                                            "type": "number"
+                                        },
+                                        "i_ang": {
+                                            "type": "number"
+                                        },
+                                        "kw": {
+                                            "type": "number"
+                                        },
+                                        "kvar": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
