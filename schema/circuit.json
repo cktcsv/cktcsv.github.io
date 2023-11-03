@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Circuit",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Circuit name."
+        },
+        "frequency": {
+            "type": "number",
+            "description": "Fundamental and default base frequency."
+        },
+        "circuit_model": {
+            "type": "string",
+            "enum": [
+                "multi_phase",
+                "pos_seq"
+            ],
+            "description": "If positive sequence, all power quantities are mulitiplied by 3 in reports. Any line with sequence parameter inputs will use the long-line equivalent pi section."
+        },
+        "earth_model": {
+            "type": "string",
+            "enum": [
+                "deri",
+                "simple_carson",
+                "full_carson"
+            ],
+            "description": "Earth model applies to Line messages that use LineGeometry for impedances."
+        },
+        "control_mode": {
+            "type": "string",
+            "enum": [
+                "ctrl_static",
+                "event_driven",
+                "time_driven",
+                "multi_rate",
+                "controls_off"
+            ],
+            "description": "Control mode for the solution."
+        },
+        "tolerance": {
+            "type": "number",
+            "description": "Solution convergence tolerance."
+        },
+        "max_iterations": {
+            "type": "integer",
+            "description": "Maximum allowable iterations for power flow solutions."
+        },
+        "load_model": {
+            "type": "string",
+            "enum": [
+                "power_flow",
+                "admittance"
+            ]
+        },
+        "load_mult": {
+            "type": "number",
+            "description": "Global load multiplier for this circuit."
+        },
+        "gen_mult": {
+            "type": "number",
+            "description": "Global multiplier for the kW output of every generator in the circuit."
+        },
+        "max_control_iter": {
+            "type": "integer",
+            "description": "Max control iterations per solution."
+        },
+        "voltage_bases": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
+            "description": "Legal bus voltage bases."
+        },
+        "number": {
+            "type": "integer",
+            "description": "Number of solutions or time steps to perform."
+        }
+    }
+}
